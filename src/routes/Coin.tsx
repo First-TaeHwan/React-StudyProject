@@ -23,8 +23,10 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
+  gap: 10px;
   height: 10vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
@@ -38,7 +40,7 @@ const Loader = styled.span`
 `;
 
 const Overview = styled.div`
-  background-color: #0c0c0c;
+  background-color: white;
   padding: 20px 30px;
   border-radius: 15px;
   display: flex;
@@ -57,6 +59,7 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
   margin: 20px;
+  color: ${(props) => props.theme.accentColor};
 `;
 
 const Tabs = styled.div`
@@ -67,7 +70,7 @@ const Tabs = styled.div`
 `;
 const Tab = styled.span<{ $isActive: boolean }>`
   text-align: center;
-  background-color: #0c0c0c;
+  background-color: white;
   height: 35px;
   padding: 10px 0;
   border-radius: 15px;
@@ -81,7 +84,20 @@ const Tab = styled.span<{ $isActive: boolean }>`
     }
   }
 `;
-
+const HomeBtn = styled.span`
+  display: flex;
+  align-items: center;
+  a {
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    color: ${(props) => props.theme.textColor};
+    transition: font-size 0.1s ease-in;
+    &:hover {
+      font-size: 18px;
+    }
+  }
+`;
 interface RouteState {
   name: string;
 }
@@ -141,7 +157,10 @@ interface IPriceData {
     };
   };
 }
-function Coin() {
+
+interface ICoinProps {}
+
+function Coin({}: ICoinProps) {
   const { coinId } = useParams<Params>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -163,6 +182,9 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
+        <HomeBtn>
+          <Link to={"/"}> home </Link>
+        </HomeBtn>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
