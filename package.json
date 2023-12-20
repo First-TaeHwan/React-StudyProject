@@ -12,7 +12,6 @@
     "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
     "apexcharts": "^3.45.0",
-    "gh-pages": "^6.1.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.1",
     "react-dom": "^18.2.0",
@@ -54,6 +53,7 @@
   "devDependencies": {
     "@types/react-helmet": "^6.1.11",
     "@types/react-router-dom": "^5.3.3",
+    "gh-pages": "^6.1.0",
     "parcel": "^2.10.3"
   },
   "homepage": "https://First-TaeHwan.github.io/React-StudyProject"
