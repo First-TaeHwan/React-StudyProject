@@ -137,7 +137,7 @@ interface IPriceData {
   last_updated: string;
   quotes: {
     USD: {
-      ath_date: string;
+      ath_date: number;
       ath_price: number;
       market_cap: number;
       market_cap_change_24h: number;
@@ -158,9 +158,7 @@ interface IPriceData {
   };
 }
 
-interface ICoinProps {}
-
-function Coin({}: ICoinProps) {
+function Coin() {
   const { coinId } = useParams<Params>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -204,7 +202,7 @@ function Coin({}: ICoinProps) {
             </OverviewItem>
             <OverviewItem>
               <span>PRICE:</span>
-              <span>${tickersData?.quotes.USD.price.toFixed(10)}</span>
+              <span>${tickersData?.quotes.USD?.price.toFixed(10)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
